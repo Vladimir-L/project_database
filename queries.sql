@@ -14,7 +14,7 @@ SELECT p.position_name,
     AVG(sl.monthly_salary) AS average_monthly_salary,
     SUM(sl.monthly_salary) AS total_monthly_salary
 FROM position AS p
-    RIGHT JOIN employe AS e ON e.position_id=p.position_id
+    INNER JOIN employe AS e ON e.position_id=p.position_id
     LEFT JOIN salary_log AS sl ON e.employe_id=sl.employe_id
 GROUP BY p.position_id;
 
@@ -28,12 +28,13 @@ GROUP BY dtl.employe_id;
 
 # quuery #5
 SELECT t.transport_name,
-    COUNT(dtl.employe_id) AS total_working_day,
-    AVG(dtl.income) AS avg_income,
-    SUM(dtl.income) AS total_income
+       COUNT(dtl.employe_id) AS total_working_day,
+       AVG(dtl.income) AS avg_income,
+       SUM(dtl.income) AS total_income
 FROM daily_transport_log AS dtl
-    INNER JOIN transport AS t ON t.transport_id=dtl.transport_id
-GROUP BY dtl.transport_id;
+         INNER JOIN transport AS t ON t.transport_id=dtl.transport_id
+GROUP BY dtl.transport_id
+ORDER BY total_income DESC;
 
 # quuery #6
 SELECT employe_first_name, employe_last_name, dob
