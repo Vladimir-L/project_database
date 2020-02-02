@@ -45,3 +45,13 @@ WHERE MONTH(dob) = 5;
 SELECT employe_first_name, employe_last_name,
     TIMESTAMPDIFF(YEAR, employment_date, CURDATE()) AS work_experience
 FROM employe;
+
+ALTER TABLE position ADD UNIQUE INDEX `EMPLOYEE_POSITION` (position_name);
+
+ALTER TABLE position DROP INDEX `EMPLOYEE_POSITION`;
+
+ALTER TABLE transport ADD UNIQUE INDEX `TRANSPORT_NUMBER` (car_number);
+
+ALTER TABLE transport DROP INDEX `TRANSPORT_NUMBER`;
+
+ALTER TABLE transport ADD INDEX `TRANSPORT_ROUTE` (transport_name);
